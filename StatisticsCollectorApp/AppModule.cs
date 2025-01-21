@@ -10,7 +10,6 @@ public class AppModule : Module
     {
         builder.RegisterType<GitHubRepositoryAnalyzer>().As<IGitHubRepositoryAnalyzer>();
         builder.RegisterType<GitHubContentService>().As<IGitHubContentService>();
-        builder.RegisterType<RepositoryContentIterator>().As<IRepositoryContentIterator>();
         builder.RegisterType<LetterStatisticsCollector>().As<IStatisticsCollector>();
         builder.RegisterType<GitHubClientFactory>().As<IGitHubClientFactory>().SingleInstance();
         builder.RegisterType<ConsoleStatisticsPublisher>().As<IStatisticsPublisher>();

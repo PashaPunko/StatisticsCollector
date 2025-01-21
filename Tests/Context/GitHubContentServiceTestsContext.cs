@@ -10,11 +10,11 @@ namespace Tests.Context;
 
 public class GitHubContentServiceTestsContext : BaseTestsContext
 {
-    private IEnumerable<RepositoryContent> contents;
     private readonly string name = Guid.NewGuid().ToString();
     private readonly string owner = Guid.NewGuid().ToString();
-    public RepositoryParameters parameters;
     private readonly string path = Guid.NewGuid().ToString();
+    private IEnumerable<RepositoryContent> contents;
+    public RepositoryParameters parameters;
     private byte[] rawContent;
     private Mock<IRepositoryContentsClient> repositoryContentsClientMock;
     private GitHubContentService service;

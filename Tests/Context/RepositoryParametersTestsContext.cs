@@ -7,9 +7,9 @@ namespace Tests.Context;
 public class RepositoryParametersTestsContext : BaseTestsContext
 {
     private string name;
+    public string newPath = "newPath";
     private string owner;
     private string path;
-    public string newPath = "newPath";
     private RepositoryParameters repositoryParameters;
 
     public RepositoryParametersTestsContext WithEmptyOwner()

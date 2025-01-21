@@ -20,10 +20,7 @@ public class LetterStatistics
 
     public void IncreaseValue(char key, long value)
     {
-        if (!letterStatistics.ContainsKey(key))
-        {
-            throw new ArgumentException("Key not found");
-        }
+        if (!letterStatistics.ContainsKey(key)) return;
 
         letterStatistics[key] += value;
     }

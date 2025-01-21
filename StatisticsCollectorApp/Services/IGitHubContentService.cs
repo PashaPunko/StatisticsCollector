@@ -4,6 +4,6 @@ namespace StatisticsCollectorApp.Services;
 
 public interface IGitHubContentService
 {
-    Task<IEnumerable<GitHubRepositoryNodeInfo>> GetAllContentByPathAsync(RepositoryParameters parameters);
+    Task<List<string>> GetAllFilePathsAsync(RepositoryParameters parameters);
     Task<string> GetRawContentAsync(RepositoryParameters parameters);
 }

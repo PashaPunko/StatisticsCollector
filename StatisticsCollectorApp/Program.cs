@@ -1,10 +1,8 @@
-﻿using System.Text.Json;
-using Autofac;
-using StatisticsCollectorApp;
-using StatisticsCollectorApp.Models;
+﻿using Autofac;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using Octokit;
+using StatisticsCollectorApp;
+using StatisticsCollectorApp.Models;
 using StatisticsCollectorApp.Services;
 using StatisticsCollectorApp.StartUp;
 
@@ -22,13 +20,29 @@ try
     container.Resolve<IStatisticsPublisher>().PublishStatistics(letterStatistics);
     Environment.Exit(default);
 }
-catch (NotFoundException ex)
+catch (InvalidOperationException ex)
 {
-    Console.WriteLine($"No repository was found for parameters: {JsonSerializer.Serialize(parameters)}");
+    Console.WriteLine("Error: " + ex.Message);
+    Console.WriteLine("Inner error: " + ex.InnerException?.Message);
+    Console.WriteLine("Stack Trace: " + ex.StackTrace);
+    Console.WriteLine("Inner Stack Trace: " + ex.InnerException?.StackTrace);
+    Environment.Exit(ex.HResult);
+}
+catch (ArgumentNullException ex)
+{
+    Console.WriteLine("Error: " + ex.Message);
+    Console.WriteLine("Stack Trace: " + ex.StackTrace);
+    Environment.Exit(ex.HResult);
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine("Impossible repository parameters: " + ex.Message);
+    Console.WriteLine("Stack Trace: " + ex.StackTrace);
     Environment.Exit(ex.HResult);
 }
 catch (Exception ex)
 {
-    Console.WriteLine(ex.Message);
+    Console.WriteLine("Error: " + ex.Message);
+    Console.WriteLine("Stack Trace: " + ex.StackTrace);
     Environment.Exit(ex.HResult);
 }

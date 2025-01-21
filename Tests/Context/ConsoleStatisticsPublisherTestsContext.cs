@@ -6,8 +6,8 @@ namespace Tests.Context;
 
 public class ConsoleStatisticsPublisherTestsContext : BaseTestsContext
 {
-    private StringWriter stringWriter;
     public LetterStatistics statistics;
+    private StringWriter stringWriter;
 
     public ConsoleStatisticsPublisherTestsContext Setup()
     {
