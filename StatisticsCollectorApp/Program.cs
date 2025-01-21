@@ -6,8 +6,7 @@ using StatisticsCollectorApp.Models;
 using StatisticsCollectorApp.Services;
 using StatisticsCollectorApp.StartUp;
 
-try
-{
+
     var builder = new ContainerBuilder();
     var configuration = new ConfigurationBuilder().AddDefaultConfiguration().Build();
 
@@ -15,15 +14,16 @@ try
     builder.RegisterModule<AppModule>();
 
     var container = builder.Build();
-    var parameters = container.Resolve<IOptions<RepositoryParameters>>().Value;
-
-    var letterStatistics = await container.Resolve<IGitHubRepositoryAnalyzer>().CollectStatisticsAsync(parameters);
-    container.Resolve<IStatisticsPublisher>().PublishStatistics(letterStatistics);
-    Environment.Exit(default);
-}
-catch (Exception ex)
-{
-    Console.WriteLine("Error: " + ex.Message);
-    Console.WriteLine("Stack Trace: " + ex.StackTrace);
-    Environment.Exit(ex.HResult);
-}
+    try
+    {
+        var parameters = container.Resolve<IOptions<RepositoryParameters>>().Value;
+        var letterStatistics = await container.Resolve<IGitHubRepositoryAnalyzer>().CollectStatisticsAsync(parameters);
+        container.Resolve<IStatisticsPublisher>().PublishStatistics(letterStatistics);
+        Environment.Exit(default);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Error: " + ex.Message);
+        Console.WriteLine("Stack Trace: " + ex.StackTrace);
+        Environment.Exit(ex.HResult);
+    }
