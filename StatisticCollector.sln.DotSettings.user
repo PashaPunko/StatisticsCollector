@@ -1,0 +1,13 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f1d989b3_002D4ac9_002D4134_002Da1fd_002D0780df352ac2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GitHubClientFactoryTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.GitHubClientFactoryTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.LetterStatisticsTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.RepositoryParametersTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.ConsoleStatisticsPublisherTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.GitHubContentServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.GitHubRepositoryAnalyzerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.LetterStatisticsCollectorTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::ABFA593F-C06F-4D06-9A6D-F09B41341D81::net8.0::Tests.RepositoryContentIteratorTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
