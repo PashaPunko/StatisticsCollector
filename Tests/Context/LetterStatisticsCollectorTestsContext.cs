@@ -13,6 +13,7 @@ public class LetterStatisticsCollectorTestsContext : BaseTestsContext
     public LetterStatisticsCollectorTestsContext SetupFileContent()
     {
         fileContent = "abcabd";
+
         return this;
     }
 

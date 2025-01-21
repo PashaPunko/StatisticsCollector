@@ -1,3 +1,4 @@
+using StatisticsCollectorApp.Services;
 using Tests.Context;
 
 namespace Tests;
@@ -17,7 +18,7 @@ public class ConsoleStatisticsPublisherTests
     {
         context.SetupStatistics();
 
-        context.GetSubject().PublishStatistics(context.statistics);
+        context.CreateSubject<ConsoleStatisticsPublisher>().PublishStatistics(context.statistics);
 
         context.ValidateOutput().Assert();
     }

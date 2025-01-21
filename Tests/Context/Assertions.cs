@@ -25,7 +25,10 @@ public class Assertions
             }
         });
 
-        if (!messagesList.Any()) return;
+        if (!messagesList.Any())
+        {
+            return;
+        }
         var message = $"\n{string.Join("\n", messagesList)}";
 
         NUnit.Framework.Assert.Fail(message);

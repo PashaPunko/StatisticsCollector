@@ -15,7 +15,7 @@ public class RepositoryParametersTests
     [Test]
     public void Create_WithValidParameters_CreatesRepositoryParameters()
     {
-        context.WithOwner().WithName().WithPath();
+        context.WithOwner().WithName().WithPath().WithReference();
 
         context.CreateSubject();
 
@@ -28,7 +28,7 @@ public class RepositoryParametersTests
     [Test]
     public void Create_WithEmptyName_ThrowsArgumentException()
     {
-        context.WithOwner().WithEmptyName().WithPath();
+        context.WithOwner().WithEmptyName().WithPath().WithReference();
 
         context.ShouldThrow<ArgumentException>(() => context.CreateSubject()).Assert();
     }
@@ -36,7 +36,15 @@ public class RepositoryParametersTests
     [Test]
     public void Create_WithEmptyOwner_ThrowsArgumentException()
     {
-        context.WithName().WithEmptyOwner().WithPath();
+        context.WithName().WithEmptyOwner().WithPath().WithReference();
+
+        context.ShouldThrow<ArgumentException>(() => context.CreateSubject()).Assert();
+    }
+
+    [Test]
+    public void Create_WithReferenceOwner_ThrowsArgumentException()
+    {
+        context.WithName().WithOwner().WithPath().WithEmptyReference();
 
         context.ShouldThrow<ArgumentException>(() => context.CreateSubject()).Assert();
     }
@@ -44,7 +52,7 @@ public class RepositoryParametersTests
     [Test]
     public void AddPath_WithValidPath_UpdatesPath()
     {
-        context.WithOwner().WithName();
+        context.WithOwner().WithName().WithReference();
 
         var subject = context.CreateSubject();
         var newSubject = subject.AddPath(context.newPath);
@@ -58,7 +66,7 @@ public class RepositoryParametersTests
     [Test]
     public void AddPath_WithEmptyPath_ThrowsArgumentException()
     {
-        context.WithOwner().WithName();
+        context.WithOwner().WithName().WithReference();
 
         var subject = context.CreateSubject();
 

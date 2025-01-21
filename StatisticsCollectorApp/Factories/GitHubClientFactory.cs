@@ -11,7 +11,11 @@ public class GitHubClientFactory(IOptions<GitHubOptions> options) : IGitHubClien
 
     public IGitHubClient GetOrCreate()
     {
-        if (client is not null) return client;
+        if (client is not null)
+        {
+            return client;
+        }
+
         var credentials = string.IsNullOrEmpty(options.Token) ? Credentials.Anonymous : new Credentials(options.Token);
 
         client = new GitHubClient(new ProductHeaderValue(nameof(StatisticsCollectorApp)))

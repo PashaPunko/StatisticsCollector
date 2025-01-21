@@ -2,7 +2,7 @@
 
 public static class RetryingHelper
 {
-    private const int MaxNumberOfRetries = 5;
+    private const int MaxNumberOfRetries = 4;
     private const int DefaultDelayStep = 1000;
 
     public static async Task<T> RetryAsync<T>(
@@ -25,8 +25,9 @@ public static class RetryingHelper
                 if (retryNumber == maxRetries)
                 {
                     Console.WriteLine($"Error occured: {e.Message}");
+                    Console.WriteLine($"Stack Trace: {e.StackTrace}");
 
-                    throw new InvalidOperationException("Max count of retries reached", e);
+                    throw new InvalidOperationException(e.Message);
                 }
 
                 await Task.Delay(delayStep * retryNumber);

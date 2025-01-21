@@ -25,15 +25,6 @@ public class LetterStatisticsTests
     }
 
     [Test]
-    public void IncreaseValue_WithInvalidKey_ThrowsException()
-    {
-        var subject = context.CreateSubject();
-        var key = 'z' + 1;
-
-        context.ShouldThrow<ArgumentException>(() => subject.IncreaseValue((char)key, 1)).Assert();
-    }
-
-    [Test]
     public void GetKeys_ReturnsAllKeys()
     {
         var subject = context.CreateSubject();

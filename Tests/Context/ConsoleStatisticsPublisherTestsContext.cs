@@ -26,11 +26,6 @@ public class ConsoleStatisticsPublisherTestsContext : BaseTestsContext
         return this;
     }
 
-    public ConsoleStatisticsPublisher GetSubject()
-    {
-        return Mocker.Create<ConsoleStatisticsPublisher>();
-    }
-
     public ConsoleStatisticsPublisherTestsContext ValidateOutput()
     {
         Assertions.Add(() => stringWriter.ToString().ShouldContain("a: 5"));

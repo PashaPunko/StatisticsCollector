@@ -10,6 +10,7 @@ public class LetterStatisticsTestsContext : BaseTestsContext
     public LetterStatisticsTestsContext ShouldHaveValue(char key, long value)
     {
         Assertions.Add(() => letterStatistics.GetStatistics().First(x => x.Key == key).Value.ShouldBe(value));
+
         return this;
     }
 
@@ -18,6 +19,7 @@ public class LetterStatisticsTestsContext : BaseTestsContext
         Assertions.Add(() => keys.Count.ShouldBe(26));
         Assertions.Add(() => keys.ShouldContain('a'));
         Assertions.Add(() => keys.ShouldContain('z'));
+
         return this;
     }
 
@@ -28,6 +30,7 @@ public class LetterStatisticsTestsContext : BaseTestsContext
         Assertions.Add(() => statistics[1].Key.ShouldBe('b'));
         Assertions.Add(() => statistics[1].Value.ShouldBe(3));
         Assertions.Add(() => statistics.Skip(2).All(s => s.Value == default).ShouldBeTrue());
+
         return this;
     }
 

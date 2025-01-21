@@ -1,3 +1,4 @@
+using StatisticsCollectorApp.Services;
 using Tests.Context;
 
 namespace Tests;
@@ -15,10 +16,10 @@ public class GitHubRepositoryAnalyzerTests
     [Test]
     public async Task CollectStatisticsAsync_WithValidParameters_ReturnsStatistics()
     {
-        context.SetupRepositoryParameters().SetupExpectedStatistics().SetupRepositoryContentIterator()
+        context.SetupRepositoryParameters().SetupExpectedStatistics().SetupFilePaths().SetupContent()
             .SetupLetterStatistics();
 
-        var result = await context.GetSubject().CollectStatisticsAsync(context.repositoryParameters);
+        var result = await context.CreateSubject<GitHubRepositoryAnalyzer>().CollectStatisticsAsync(context.repositoryParameters);
 
         context.ValidateCollectStatisticsAsync(result).Assert();
     }

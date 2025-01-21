@@ -10,15 +10,25 @@ public class GitHubRepositoryAnalyzer(
 
     public async Task<LetterStatistics> CollectStatisticsAsync(RepositoryParameters parameters)
     {
-        var letterStatistics = new LetterStatistics();
-        var files = await contentService.GetAllFilePathsAsync(parameters);
-        foreach (var file in files.Where(filePath => FileExtensionsToAnalyze.Any(filePath.EndsWith)))
+        try
         {
-            var fileParameters = parameters.AddPath(file);
-            var fileContent = await contentService.GetRawContentAsync(fileParameters);
-            statisticsCollector.CollectStatistics(letterStatistics, fileContent);
-        }
+            var letterStatistics = new LetterStatistics();
+            var files = await contentService.GetAllFilePathsAsync(parameters);
+            foreach (var file in files.Where(filePath => FileExtensionsToAnalyze.Any(filePath.EndsWith)))
+            {
+                var fileParameters = parameters.AddPath(file);
+                var fileContent = await contentService.GetRawContentAsync(fileParameters);
+                statisticsCollector.CollectStatistics(letterStatistics, fileContent);
+            }
 
-        return letterStatistics;
+            return letterStatistics;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Statistic collection failed due to error: " + ex.Message);
+            Console.WriteLine($"Initial repository parameters: name: {parameters.Name}, owner: {parameters.Owner}, reference: {parameters.Reference}");
+            Console.WriteLine("Stack Trace: " + ex.StackTrace);
+            throw new InvalidOperationException("Statistic collection failed", ex);
+        }
     }
 }

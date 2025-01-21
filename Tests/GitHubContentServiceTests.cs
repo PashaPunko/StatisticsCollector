@@ -1,3 +1,4 @@
+using StatisticsCollectorApp.Services;
 using Tests.Context;
 
 namespace Tests;
@@ -13,13 +14,23 @@ public class GitHubContentServiceTests
     }
 
     [Test]
-    public async Task GetAllContentByPathAsync_WithValidParameters_ReturnsContent()
+    public async Task GetAllFilePathsAsync_WithTreeResponse_ReturnsContent()
+    {
+        context.SetupTreeResponseContents();
+
+        var results = await context.CreateSubject<GitHubContentService>().GetAllFilePathsAsync(context.parameters);
+
+        context.ValidateGetAllFilePathsAsync(results).Assert();
+    }
+
+    [Test]
+    public async Task GetAllFilePathsAsync_WithRecursiveResponse_ReturnsContent()
     {
         context.SetupRepositoryContents();
 
-        var results = await context.GetSubject().GetAllContentByPathAsync(context.parameters);
+        var results = await context.CreateSubject<GitHubContentService>().GetAllFilePathsAsync(context.parameters);
 
-        context.ValidateGetAllContentByPathAsync(results).Assert();
+        context.ValidateGetAllFilePathsAsync(results).Assert();
     }
 
     [Test]
@@ -27,7 +38,7 @@ public class GitHubContentServiceTests
     {
         context.SetupRawContent();
 
-        var results = await context.GetSubject().GetRawContentAsync(context.parameters);
+        var results = await context.CreateSubject<GitHubContentService>().GetRawContentAsync(context.parameters);
 
         context.ValidateGetRawContentAsync(results).Assert();
     }

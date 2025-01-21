@@ -10,6 +10,7 @@ public class RepositoryParametersTestsContext : BaseTestsContext
     public string newPath = "newPath";
     private string owner;
     private string path;
+    private string reference;
     private RepositoryParameters repositoryParameters;
 
     public RepositoryParametersTestsContext WithEmptyOwner()
@@ -42,9 +43,21 @@ public class RepositoryParametersTestsContext : BaseTestsContext
         return this;
     }
 
+    public RepositoryParametersTestsContext WithEmptyReference()
+    {
+        reference = string.Empty;
+        return this;
+    }
+
+    public RepositoryParametersTestsContext WithReference()
+    {
+        reference = Guid.NewGuid().ToString();
+        return this;
+    }
+
     public RepositoryParameters CreateSubject()
     {
-        repositoryParameters = RepositoryParameters.Create(owner, name, path);
+        repositoryParameters = RepositoryParameters.Create(owner, name, reference, path);
         return repositoryParameters;
     }
 
