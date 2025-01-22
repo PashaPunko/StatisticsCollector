@@ -60,7 +60,10 @@ public class GitHubRepositoryAnalyzerTestsContext : BaseTestsContext
     {
         Assertions.Add(() => actualStatistics.ShouldNotBeNull());
         foreach (var (key, value) in actualStatistics.GetStatistics())
+        {
             Assertions.Add(() => value.ShouldBe(expectedStatistics.GetValueOrDefault(key)));
+        }
+
 
         return this;
     }

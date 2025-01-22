@@ -10,10 +10,6 @@ namespace Tests.Context;
 
 public class GitHubContentServiceTestsContext : BaseTestsContext
 {
-    private readonly string name = Guid.NewGuid().ToString();
-    private readonly string owner = Guid.NewGuid().ToString();
-    private readonly string path = Guid.NewGuid().ToString();
-    private readonly string reference = Guid.NewGuid().ToString();
     private readonly List<string> filesToReturn = ["path/file1", "path/dir/file2"];
     public RepositoryParameters parameters;
     private byte[] rawContent;
@@ -22,7 +18,8 @@ public class GitHubContentServiceTestsContext : BaseTestsContext
 
     public GitHubContentServiceTestsContext Setup()
     {
-        parameters = RepositoryParameters.Create(owner, name, reference, path);
+        parameters = RepositoryParameters.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(),
+            Guid.NewGuid().ToString(), Guid.NewGuid().ToString());
         var clientFactoryMock = Mocker.Mock<IGitHubClientFactory>();
         var clientMock = Mocker.Mock<IGitHubClient>();
         repositoryContentsClientMock = Mocker.Mock<IRepositoryContentsClient>();

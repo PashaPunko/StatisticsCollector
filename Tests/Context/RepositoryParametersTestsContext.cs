@@ -73,6 +73,12 @@ public class RepositoryParametersTestsContext : BaseTestsContext
         return this;
     }
 
+    public RepositoryParametersTestsContext ShouldHaveReference()
+    {
+        Assertions.Add(() => repositoryParameters.Reference.ShouldBe(reference));
+        return this;
+    }
+
     public RepositoryParametersTestsContext ShouldHavePath()
     {
         Assertions.Add(() => repositoryParameters.Path.ShouldBe(path));

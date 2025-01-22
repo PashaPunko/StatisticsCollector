@@ -17,7 +17,7 @@ public class GitHubContentService(IGitHubClientFactory clientFactory) : IGitHubC
 
         if (response == null)
         {
-            throw new InvalidOperationException("Repository Tree Response is null");
+            throw new InvalidOperationException("GitHub Api Tree Response is null");
         }
 
         if (response.Truncated)

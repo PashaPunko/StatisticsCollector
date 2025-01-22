@@ -20,6 +20,7 @@ public class RepositoryParametersTests
         context.CreateSubject();
 
         context.ShouldHaveOwner()
+            .ShouldHaveReference()
             .ShouldHaveName()
             .ShouldHavePath()
             .Assert();
@@ -58,6 +59,7 @@ public class RepositoryParametersTests
         var newSubject = subject.AddPath(context.newPath);
 
         context.ShouldHaveOwner()
+            .ShouldHaveReference()
             .ShouldHaveName()
             .ShouldHaveNewPath(newSubject)
             .Assert();
